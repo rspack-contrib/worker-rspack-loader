@@ -12,6 +12,16 @@
 [![chat][chat]][chat-url]
 [![size][size]][size-url]
 
+# === Notice ===
+
+This loader is forked from [webpack-contrib/worker-loader](https://github.com/webpack-contrib/worker-loader) since it has been archived.
+
+The loader is basically the same as [webpack-contrib/worker-loader](https://github.com/webpack-contrib/worker-loader). And this loader can be used with both Rspack and Webpack 5.
+
+Change list:
+
+- Compatible with Rspack: https://github.com/rspack-contrib/worker-rspack-loader/commit/7b90e834f67177badc313a52f701422256330d1e
+
 # worker-loader
 
 **DEPRECATED for v5**: https://webpack.js.org/guides/web-workers/
