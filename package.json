@@ -1,12 +1,12 @@
 {
-  "name": "worker-loader",
-  "version": "3.0.8",
-  "description": "worker loader module for webpack",
+  "name": "worker-rspack-loader",
+  "version": "3.1.0",
+  "description": "worker loader module for rspack",
   "license": "MIT",
-  "repository": "webpack-contrib/worker-loader",
+  "repository": "rspack-contrib/worker-rspack-loader",
   "author": "Tobias Koppers @sokra",
-  "homepage": "https://github.com/webpack-contrib/worker-loader",
-  "bugs": "https://github.com/webpack-contrib/worker-loader/issues",
+  "homepage": "https://github.com/rspack-contrib/worker-rspack-loader",
+  "bugs": "https://github.com/rspack-contrib/worker-rspack-loader/issues",
   "funding": {
     "type": "opencollective",
     "url": "https://opencollective.com/webpack"
