@@ -12,9 +12,18 @@ import {
   getExternalsType,
 } from "./utils";
 
+function isWebpack5() {
+  try {
+    // eslint-disable-next-line global-require, import/no-unresolved
+    return require("webpack/package.json").version.startsWith("5.");
+  } catch (_err) {
+    // Treat rspack as webpack 5
+    return true;
+  }
+}
+
 // determine the version of webpack peer dependency
-// eslint-disable-next-line global-require, import/no-unresolved
-const useWebpack5 = require("webpack/package.json").version.startsWith("5.");
+const useWebpack5 = isWebpack5();
 
 export default function loader() {}
 
