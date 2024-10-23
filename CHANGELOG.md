@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.1](https://github.com/rspack-contrib/worker-rspack-loader/compare/v3.1.0...v3.1.1) (2024-10-23)
+
+
+### Bug Fixes
+
+* support run in pure rspack project ([4a595fc](https://github.com/rspack-contrib/worker-rspack-loader/commit/4a595fc3ec39cc359f50481b80d0e1190239501d))
+* support run in pure rspack project ([d5b7f04](https://github.com/rspack-contrib/worker-rspack-loader/commit/d5b7f04dc1c643093d7a08867184f7db41f20125))
+
 ## [3.1.0](https://github.com/rspack-contrib/worker-rspack-loader/compare/v3.0.8...v3.1.0) (2024-06-17)
 
 
