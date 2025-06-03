@@ -1,5 +1,10 @@
 # worker-rspack-loader
 
+Web Worker loader for Rspack.
+
+> [!NOTE]
+> Usually you only need to use this loader if you need inline Web Workers, otherwise you should refer to [Rspack's Web Workers guide](https://rspack.rs/guide/features/web-workers).
+
 [![npm][npm]][npm-url]
 [![node][node]][node-url]
 [![size][size]][size-url]
@@ -13,9 +18,6 @@ The loader is basically the same as [webpack-contrib/worker-loader](https://gith
 Change list:
 
 - Compatible with Rspack: https://github.com/rspack-contrib/worker-rspack-loader/commit/7b90e834f67177badc313a52f701422256330d1e
-
-
-Web Worker loader for Rspack.
 
 ## Getting Started
 
