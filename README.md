@@ -1,18 +1,10 @@
-<div align="center">
-  <a href="https://github.com/webpack/webpack">
-    <img width="200" height="200" src="https://webpack.js.org/assets/icon-square-big.svg">
-  </a>
-</div>
+# worker-rspack-loader
 
 [![npm][npm]][npm-url]
 [![node][node]][node-url]
-[![deps][deps]][deps-url]
-[![tests][tests]][tests-url]
-[![coverage][cover]][cover-url]
-[![chat][chat]][chat-url]
 [![size][size]][size-url]
 
-# === Notice ===
+## Notice
 
 This loader is forked from [webpack-contrib/worker-loader](https://github.com/webpack-contrib/worker-loader) since it has been archived.
 
@@ -22,20 +14,15 @@ Change list:
 
 - Compatible with Rspack: https://github.com/rspack-contrib/worker-rspack-loader/commit/7b90e834f67177badc313a52f701422256330d1e
 
-# worker-loader
 
-**DEPRECATED for v5**: https://webpack.js.org/guides/web-workers/
-
-Web Worker loader for webpack 4.
-
-Note that this is specific to webpack 4. To use Web Workers in webpack 5, see https://webpack.js.org/guides/web-workers/.
+Web Worker loader for Rspack.
 
 ## Getting Started
 
-To begin, you'll need to install `worker-loader`:
+To begin, you'll need to install `worker-rspack-loader`:
 
 ```console
-$ npm install worker-loader --save-dev
+$ npm install worker-rspack-loader --save-dev
 ```
 
 ### Inlined
@@ -43,12 +30,12 @@ $ npm install worker-loader --save-dev
 **App.js**
 
 ```js
-import Worker from "worker-loader!./Worker.js";
+import Worker from "worker-rspack-loader!./Worker.js";
 ```
 
 ### Config
 
-**webpack.config.js**
+**rspack.config.js**
 
 ```js
 module.exports = {
@@ -56,7 +43,7 @@ module.exports = {
     rules: [
       {
         test: /\.worker\.js$/,
-        use: { loader: "worker-loader" },
+        use: { loader: "worker-rspack-loader" },
       },
     ],
   },
@@ -76,7 +63,7 @@ worker.onmessage = function (event) {};
 worker.addEventListener("message", function (event) {});
 ```
 
-And run `webpack` via your preferred method.
+And run Rspack via your preferred method.
 
 ## Options
 
@@ -100,7 +87,7 @@ Set the worker type.
 
 Allows to set web worker constructor name.
 
-**webpack.config.js**
+**rspack.config.js**
 
 ```js
 module.exports = {
@@ -108,7 +95,7 @@ module.exports = {
     rules: [
       {
         test: /\.worker\.(c|m)?js$/i,
-        loader: "worker-loader",
+        loader: "worker-rspack-loader",
         options: {
           worker: "SharedWorker",
         },
@@ -122,7 +109,7 @@ module.exports = {
 
 Allow to set web worker constructor name and options.
 
-**webpack.config.js**
+**rspack.config.js**
 
 ```js
 module.exports = {
@@ -130,7 +117,7 @@ module.exports = {
     rules: [
       {
         test: /\.worker\.(c|m)?js$/i,
-        loader: "worker-loader",
+        loader: "worker-rspack-loader",
         options: {
           worker: {
             type: "SharedWorker",
@@ -153,11 +140,12 @@ Type: `String|Function`
 Default: based on `output.publicPath`
 
 The `publicPath` specifies the public URL address of the output files when referenced in a browser.
-If not specified, the same public path used for other webpack assets is used.
+
+If not specified, the same public path used for other Rspack assets is used.
 
 #### `String`
 
-**webpack.config.js**
+**rspack.config.js**
 
 ```js
 module.exports = {
@@ -165,7 +153,7 @@ module.exports = {
     rules: [
       {
         test: /\.worker\.(c|m)?js$/i,
-        loader: "worker-loader",
+        loader: "worker-rspack-loader",
         options: {
           publicPath: "/scripts/workers/",
         },
@@ -177,7 +165,7 @@ module.exports = {
 
 #### `Function`
 
-**webpack.config.js**
+**rspack.config.js**
 
 ```js
 module.exports = {
@@ -185,7 +173,7 @@ module.exports = {
     rules: [
       {
         test: /\.worker\.(c|m)?js$/i,
-        loader: "worker-loader",
+        loader: "worker-rspack-loader",
         options: {
           publicPath: (pathData, assetInfo) => {
             return `/scripts/${pathData.hash}/workers/`;
@@ -206,7 +194,7 @@ The filename of entry chunks for web workers.
 
 #### `String`
 
-**webpack.config.js**
+**rspack.config.js**
 
 ```js
 module.exports = {
@@ -214,7 +202,7 @@ module.exports = {
     rules: [
       {
         test: /\.worker\.(c|m)?js$/i,
-        loader: "worker-loader",
+        loader: "worker-rspack-loader",
         options: {
           filename: "[name].[contenthash].worker.js",
         },
@@ -226,7 +214,7 @@ module.exports = {
 
 #### `Function`
 
-**webpack.config.js**
+**rspack.config.js**
 
 ```js
 module.exports = {
@@ -234,7 +222,7 @@ module.exports = {
     rules: [
       {
         test: /\.worker\.(c|m)?js$/i,
-        loader: "worker-loader",
+        loader: "worker-rspack-loader",
         options: {
           filename: (pathData) => {
             if (
@@ -259,7 +247,7 @@ Default: based on `output.chunkFilename`, adding `worker` suffix, for example - 
 
 The filename of non-entry chunks for web workers.
 
-**webpack.config.js**
+**rspack.config.js**
 
 ```js
 module.exports = {
@@ -267,7 +255,7 @@ module.exports = {
     rules: [
       {
         test: /\.worker\.(c|m)?js$/i,
-        loader: "worker-loader",
+        loader: "worker-rspack-loader",
         options: {
           chunkFilename: "[id].[contenthash].worker.js",
         },
@@ -286,7 +274,7 @@ Allow to inline the worker as a `BLOB`.
 
 Inline mode with the `fallback` value will create file for browsers without support web workers, to disable this behavior just use `no-fallback` value.
 
-**webpack.config.js**
+**rspack.config.js**
 
 ```js
 module.exports = {
@@ -294,7 +282,7 @@ module.exports = {
     rules: [
       {
         test: /\.worker\.(c|m)?js$/i,
-        loader: "worker-loader",
+        loader: "worker-rspack-loader",
         options: {
           inline: "fallback",
         },
@@ -309,11 +297,11 @@ module.exports = {
 Type: `Boolean`
 Default: `true`
 
-By default, `worker-loader` generates JS modules that use the ES modules syntax.
+By default, `worker-rspack-loader` generates JS modules that use the ES modules syntax.
 
 You can enable a CommonJS modules syntax using:
 
-**webpack.config.js**
+**rspack.config.js**
 
 ```js
 module.exports = {
@@ -321,7 +309,7 @@ module.exports = {
     rules: [
       {
         test: /\.worker\.(c|m)?js$/i,
-        loader: "worker-loader",
+        loader: "worker-rspack-loader",
         options: {
           esModule: false,
         },
@@ -376,7 +364,7 @@ onmessage = function (event) {
 };
 ```
 
-**webpack.config.js**
+**rspack.config.js**
 
 ```js
 module.exports = {
@@ -384,7 +372,7 @@ module.exports = {
     rules: [
       {
         test: /\.worker\.(c|m)?js$/i,
-        loader: "worker-loader",
+        loader: "worker-rspack-loader",
         options: {
           esModule: false,
         },
@@ -437,7 +425,7 @@ onmessage = function (event) {
 };
 ```
 
-**webpack.config.js**
+**rspack.config.js**
 
 ```js
 module.exports = {
@@ -447,7 +435,7 @@ module.exports = {
         test: /\.worker\.(c|m)?js$/i,
         use: [
           {
-            loader: "worker-loader",
+            loader: "worker-rspack-loader",
           },
           {
             loader: "babel-loader",
@@ -466,12 +454,12 @@ module.exports = {
 
 To integrate with TypeScript, you will need to define a custom module for the exports of your worker.
 
-#### Loading with `worker-loader!`
+#### Loading with `worker-rspack-loader!`
 
-**typings/worker-loader.d.ts**
+**typings/worker-rspack-loader.d.ts**
 
 ```typescript
-declare module "worker-loader!*" {
+declare module "worker-rspack-loader!*" {
   // You need to change `Worker`, if you specified a different value for the `workerType` option
   class WebpackWorker extends Worker {
     constructor();
@@ -498,7 +486,7 @@ ctx.addEventListener("message", (event) => console.log(event));
 **index.ts**
 
 ```typescript
-import Worker from "worker-loader!./Worker";
+import Worker from "worker-rspack-loader!./Worker";
 
 const worker = new Worker();
 
@@ -508,13 +496,13 @@ worker.onmessage = (event) => {};
 worker.addEventListener("message", (event) => {});
 ```
 
-#### Loading without `worker-loader!`
+#### Loading without `worker-rspack-loader!`
 
-Alternatively, you can omit the `worker-loader!` prefix passed to `import` statement by using the following notation.
-This is useful for executing the code using a non-WebPack runtime environment
+Alternatively, you can omit the `worker-rspack-loader!` prefix passed to `import` statement by using the following notation.
+This is useful for executing the code using a non-Rspack runtime environment
 (such as Jest with [`workerloader-jest-transformer`](https://github.com/astagi/workerloader-jest-transformer)).
 
-**typings/worker-loader.d.ts**
+**typings/worker-rspack-loader.d.ts**
 
 ```typescript
 declare module "*.worker.ts" {
@@ -554,7 +542,7 @@ worker.onmessage = (event) => {};
 worker.addEventListener("message", (event) => {});
 ```
 
-**webpack.config.js**
+**rspack.config.js**
 
 ```js
 module.exports = {
@@ -563,7 +551,7 @@ module.exports = {
       // Place this *before* the `ts-loader`.
       {
         test: /\.worker\.ts$/,
-        loader: "worker-loader",
+        loader: "worker-rspack-loader",
       },
       {
         test: /\.ts$/,
@@ -579,9 +567,9 @@ module.exports = {
 
 ### Cross-Origin Policy
 
-[`WebWorkers`](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) are restricted by a [same-origin policy](https://en.wikipedia.org/wiki/Same-origin_policy), so if your `webpack` assets are not being served from the same origin as your application, their download may be blocked by your browser.
+[`WebWorkers`](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) are restricted by a [same-origin policy](https://en.wikipedia.org/wiki/Same-origin_policy), so if your Rspack assets are not being served from the same origin as your application, their download may be blocked by your browser.
 This scenario can commonly occur if you are hosting your assets under a CDN domain.
-Even downloads from the `webpack-dev-server` could be blocked.
+Even downloads from the `rspack-dev-server` could be blocked.
 
 There are two workarounds:
 
@@ -593,14 +581,14 @@ Firstly, you can inline the worker as a blob instead of downloading it as an ext
 import Worker from "./file.worker.js";
 ```
 
-**webpack.config.js**
+**rspack.config.js**
 
 ```js
 module.exports = {
   module: {
     rules: [
       {
-        loader: "worker-loader",
+        loader: "worker-rspack-loader",
         options: { inline: "fallback" },
       },
     ],
@@ -617,14 +605,14 @@ Secondly, you may override the base download URL for your worker script via the 
 import Worker from "./file.worker.js";
 ```
 
-**webpack.config.js**
+**rspack.config.js**
 
 ```js
 module.exports = {
   module: {
     rules: [
       {
-        loader: "worker-loader",
+        loader: "worker-rspack-loader",
         options: { publicPath: "/workers/" },
       },
     ],
@@ -642,17 +630,14 @@ Please take a moment to read our contributing guidelines if you haven't yet done
 
 [MIT](./LICENSE)
 
-[npm]: https://img.shields.io/npm/v/worker-loader.svg
-[npm-url]: https://npmjs.com/package/worker-loader
-[node]: https://img.shields.io/node/v/worker-loader.svg
+[npm]: https://img.shields.io/npm/v/worker-rspack-loader.svg
+[npm-url]: https://npmjs.com/package/worker-rspack-loader
+[node]: https://img.shields.io/node/v/worker-rspack-loader.svg
 [node-url]: https://nodejs.org
-[deps]: https://david-dm.org/webpack-contrib/worker-loader.svg
-[deps-url]: https://david-dm.org/webpack-contrib/worker-loader
-[tests]: https://github.com/webpack-contrib/worker-loader/workflows/worker-loader/badge.svg
-[tests-url]: https://github.com/webpack-contrib/worker-loader/actions
-[cover]: https://codecov.io/gh/webpack-contrib/worker-loader/branch/master/graph/badge.svg
-[cover-url]: https://codecov.io/gh/webpack-contrib/worker-loader
-[chat]: https://badges.gitter.im/webpack/webpack.svg
-[chat-url]: https://gitter.im/webpack/webpack
-[size]: https://packagephobia.now.sh/badge?p=worker-loader
-[size-url]: https://packagephobia.now.sh/result?p=worker-loader
+[deps]: https://david-dm.org/rspack-contrib/worker-rspack-loader.svg
+[tests]: https://github.com/rspack-contrib/worker-rspack-loader/workflows/worker-rspack-loader/badge.svg
+[tests-url]: https://github.com/rspack-contrib/worker-rspack-loader/actions
+[cover]: https://codecov.io/gh/rspack-contrib/worker-rspack-loader/branch/master/graph/badge.svg
+[cover-url]: https://codecov.io/gh/rspack-contrib/worker-rspack-loader
+[size]: https://packagephobia.now.sh/badge?p=worker-rspack-loader
+[size-url]: https://packagephobia.now.sh/result?p=worker-rspack-loader
